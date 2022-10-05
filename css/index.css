@@ -1,0 +1,91 @@
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 300px) {
+    /* For tablets: */
+    .map-col {width: 100%;}
+    .water-table-col {width: 100%;}
+    .weather-col {width: 100%;}
+
+
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .map-col {width: 100%;}
+    .water-table-col {width: 100%;}
+    .weather-col {width: 100%;}
+
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (width: 820px) {
+  /* For tablets: */
+    .map-col {width: 100%;}
+    .water-table-col {width: 100%}
+    .weather-col {width: 100%;}
+
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 1024px) {
+  /* For tablets: */
+    .map-col {width: 100%;}
+    .water-table-col {width: 90%;}
+    .weather-col {width: 100%;}
+
+}
+
+.landing-wrapper {
+    width: 99.9%;
+    height: 26rem;
+    padding:0;
+    position: relative;
+    overflow:hidden;
+    cursor:pointer;
+  }
+  
+  .landing-inner-content {
+    width: 210rem;
+    height: 280px;
+  }
+
+.table-hover tbody tr:hover {
+    background-color: #78eed4;
+}
+
+.table-hover2 tbody tr:hover {
+    background-color: #ffc74e;
+}
+
+
+.loader {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+  margin:15px auto;
+  position: relative;
+  color: rgb(0, 0, 0);
+  box-sizing: border-box;
+  animation: animloader 2s linear infinite;
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
+  25% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 2px;
+  }
+  50% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 2px,  -38px 0 0 -2px;
+  }
+  75% {
+    box-shadow: 14px 0 0 2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
+  100% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
+}

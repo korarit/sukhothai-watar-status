@@ -1,0 +1,356 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>หน้าหลัก</title>
+
+        <!-- ajax-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <!-- axios -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js" integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- vue 3 -->
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+        <!-- draggable -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/Draggable.min.js"></script>
+
+        <!-- bulma.io -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+
+        <!-- my css -->
+        <link rel="stylesheet" href="/css/index.css">
+        <!-- font-awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <!-- leafletjs -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+
+
+
+        <!-- sweert alert 2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    </head>
+    <body>
+      <div id="app">
+
+        <!-- navbar -->
+        <nav class="navbar is-primary is-mobile">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="/" style="font-size: 22px;">
+                <span class="icon">
+                    <i class="fa-sharp fa-solid fa-water"></i>
+                </span>
+                &nbsp;
+                <h1>สถานการณ์น้ำ - สุโขทัย</h1>
+              </a>
+              <div class="navbar-burger" id="burger" data-toggle="navbar-links">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          
+            <div id="navbar-links" class="navbar-menu">
+              <div class="navbar-start">
+                <a class="navbar-item is-active" href="#">
+                    <span class="icon">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </span>
+                    &nbsp;
+                    หน้าหลัก
+                </a>
+                <a class="navbar-item" href="#">
+                    <span class="icon">
+                        <i class="fa-solid fa-cloud-showers-water"></i>
+                    </span>
+                    &nbsp;
+                    คาดการณ์
+                </a>
+              </div>
+          
+              <div class="navbar-end">
+                <div class="navbar-item">
+                  <div class="field is-grouped">
+                    <p class="control">
+                      <a class="button is-primary" href="https://github.com/korarit" target="_blank">
+                        <span class="icon">
+                            <i class="fa-brands fa-github"></i>
+                        </span>
+                        <span>GITHUB</span>
+                      </a>
+                    </p>
+
+                    <p class="control">
+                        <a class="button is-primary" href="dev.html" target="_blank">
+                          <span class="icon">
+                            <i class="fa-solid fa-user"></i>
+                          </span>
+                          <span>ผู้พัฒนา</span>
+                        </a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <!-- end nav -->
+
+          <div style="height: 4rem;"></div>
+
+          <!-- data water level -->
+          <div class="table_water_data">
+
+            <div class="column">
+              
+              <div class="columns is-gapless is-multiline is-centered ">
+
+                <div class="column is-narrow water-table-col" style="max-height: 80rem">
+                
+                    <!-- table data water level -->
+                    <div class="card" style="width: 30rem;">
+                        <header class="card-header">
+                        <p class="card-header-title" style="font-size: 22px;">
+                            แผนที่
+                        </p>
+                        </header>
+                        <div class="card-content">
+                        <div id="map" style="height: 570px;">
+                            
+                        </div>
+                        </div>
+                        <footer class="card-footer">
+                        &nbsp;&nbsp;&nbsp;
+                        <p style="font-size: 18px;">
+                            ข้อมูลจาก thaiwater.net
+                        </p>
+                        </footer>
+                    </div>
+
+                </div>
+                <div class="column is-one-quarter is-narrow" style="width: 1rem;">
+                </div>
+                <div class="column is-mobile is-narrow water-table-col" style="max-height: 80rem;">
+                    <!-- table data water level -->
+                    <div class="card" style="width: 70rem;max-height: 80rem">
+                        <header class="card-header">
+                        <p class="card-header-title" style="font-size: 22px;">
+                            ข้อมูลปริมาณน้ำ
+                        </p>
+                        </header>
+                        <div class="card-content">
+                        <div class="content">
+
+                            <div class="table-container">
+                            <table class="table table-hover" style="max-height: 46rem;">
+                                <thead>
+                                  <tr>
+                                    <th style="width: 2rem;">#</th>
+                                    <th style="width: 18rem;">สถานี</th>
+                                    <th style="width: 7rem;">ระดับน้ำ</th>
+                                    <th style="width: 7rem;">ระดับตลิ่ง</th>
+                                    <th style="width: 7rem;">ปริมาณน้ำ</th>
+                                    <th style="width: 10rem;">สถานการณ์น้ำ</th>
+                                    <th style="width: 8rem;">ข้อมูล ณ เวลา</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="list in datas" v-on:click="more(list.data_id)">
+                                      <th>{{ list.station_id }}</th>
+                                      <td>{{ list.station_name }}</td>
+                                      <td>{{ list.value }}ม.</td>
+                                      <td>{{ list.height_river }}ม.</td>
+                                      <td>
+                                        <div v-if="list.status_water == 'low_water'">
+                                          <span style="width: 5rem;" class="tag is-info is-medium"><b>{{list.precent_water}}%</b></span>
+                                        </div>
+                                        <div v-if="list.status_water == 'normal_water'">
+                                          <span style="width: 5rem;" class="tag is-success is-medium"><b>{{list.precent_water}}%</b></span>
+                                        </div>
+                                        <div v-if="list.status_water == 'very_water'">
+                                          <span style="width: 5rem;" class="tag is-Link is-medium"><b>{{list.precent_water}}%</b></span>
+                                        </div>
+                                        <div v-if="list.status_water == 'a_lot_water'">
+                                          <span style="width: 5rem;" class="tag is-Warning is-medium"><b>{{list.precent_water}}%</b></span>
+                                        </div>
+                                        <div v-if="list.status_water == 'overflow_water'">
+                                          <span style="width: 5rem;" class="tag is-danger is-medium"><b>{{list.precent_water}}%</b></span>
+                                        </div>
+                                      </td>
+                                      <td>
+                                        <div v-if="list.status_water == 'low_water'">
+                                          <span style="width: 7rem;" class="tag is-info is-medium">ปริมาณน้ำน้อย</span>
+                                        </div>
+                                        <div v-if="list.status_water == 'normal_water'">
+                                          <span style="width: 7rem;" class="tag is-success is-medium">ปริมาณน้าปกติ</span>
+                                        </div>
+                                        <div v-if="list.status_water == 'very_water'">
+                                          <span style="width: 7rem;" class="tag is-Link is-medium">ปริมาณน้ำมาก</span>
+                                        </div>
+                                        <div v-if="list.status_water == 'a_lot_water'">
+                                          <span style="width: 7rem;" class="tag is-Warning is-medium">น้ำใกล้ล้นตลิ่ง</span>
+                                        </div>
+                                        <div v-if="list.status_water == 'overflow_water'">
+                                          <span style="width: 7rem;" class="tag is-danger is-medium">น้ำล้นตลิ่ง</span>
+                                        </div>
+                                      </td>
+                                      <td><center>{{ list.time }}น.</center></td>
+                                    </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                        </div>
+                        </div>
+                        <footer class="card-footer">
+                        &nbsp;&nbsp;&nbsp;
+                        <p style="font-size: 18px;">
+                            ข้อมูลจาก thaiwater.net
+                        </p>
+                        </footer>
+                    </div>
+                    
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+              
+            <div class="columns is-gapless is-multiline is-centered ">
+
+              <div class="column is-narrow water-table-col" style="max-height: 80rem;"  v-for="list in floodgate">
+              
+                  <!-- table data water level -->
+                  <div class="card" style="width: 40rem;">
+                      <header class="card-header">
+                      <p class="card-header-title" style="font-size: 22px;">
+                          {{list.name}}
+                      </p>
+                      </header>
+                      <div class="card-content">
+                        <p style="font-size: 22px;">
+                          {{list.amount}} ลูกบาศก์เมตร
+                        </p>
+                        <p style="font-size: 18px;">
+                          (ข้อมูลวันที่ {{list.date}} เวลา {{list.time}}น.)
+                        </p>
+                      </div>
+                      <footer class="card-footer">
+                      &nbsp;&nbsp;&nbsp;
+                      <p style="font-size: 18px;">
+                          ข้อมูลจาก FB : โครงการประตูระบายน้ำแม่น้ำยมบ้านหาดสะพานจันทร์
+                      </p>
+                      </footer>
+                  </div>
+
+              </div>
+            </div>
+          </div>  
+
+            <div style="height: 1rem;"></div>
+            <div class="columns is-gapless is-multiline is-centered">
+              <div class="column is-narrow" style="max-height: 80rem;">
+                <!-- table data water level -->
+                <div class="card" style="width: 101rem;max-height: 81rem">
+                    <header class="card-header">
+                    <p class="card-header-title" style="font-size: 22px;">
+                        พยากรณ์อากาศ ณ เวลา {{ time_now }}น.
+                    </p>
+                    </header>
+                    <div class="card-content">
+                    <div class="content">
+                        <div id="loading_weather" style="display:block;">
+                          <center><h3>กำลังโหลดข้อมูล</h3></center><span class="loader"></span>
+                        </div>
+
+                        <div class="table-container" id="table_weather" style="display:none;">
+                        <table class="table is-hoverable" style="max-height: 46rem;">
+                            <thead>
+                              <tr>
+                                <th style="width: 2rem;">#</th>
+                                <th style="width: 12rem;">สถานี</th>
+                                <th style="width: 7rem;">สภาพอากาศ</th>
+                                <th style="width: 3rem;">ปริมาณเฆฆ</th>
+                                <th style="width: 6rem;">ปริมาณฝนสะสม</th>
+                                <th style="width: 7rem;">อุณหภมิ</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="list in data_weather">
+                                  <th>{{list.id}}</th>
+                                  <td>{{list.station_name}}</td>
+                                  <td>
+                                    <div v-if="list.data.cond === 1">
+                                      <span style="max-width: 10rem;background-color: #91e0ff;color: #000000;" class="tag is-medium"><b>ท้องฟ้าแจ่มใส</b></span>
+                                    </div>
+                                    <div v-else-if="list.data.cond === 2">
+                                      <span style="max-width: 10rem;background-color: #45a0c4;color: #000000;" class="tag is-medium"><b>มีเมฆบางส่วน</b></span>
+                                    </div>
+                                    <div v-else-if="list.data.cond === 3">
+                                      <span style="max-width: 10rem;background-color: #46a5f3;color: #ffffff;" class="tag is-medium"><b>เมฆเป็นส่วนมาก</b></span>
+                                    </div>
+                                    <div v-else-if="list.data.cond === 4">
+                                      <span style="max-width: 10rem;background-color: #2e85cc;color: #ffffff;" class="tag is-medium"><b>มีเมฆมาก</b></span>
+                                    </div>
+                                    <div v-else-if="list.data.cond === 5">
+                                      <span style="max-width: 10rem;background-color: #45f5c0;color: #ffffff;" class="tag is-medium"><b>ฝนตกเล็กน้อย</b></span>
+                                    </div>
+                                    <div v-else-if="list.data.cond === 6">
+                                      <span style="max-width: 10rem;background-color: #00c58a;color: #ffffff;" class="tag is-medium"><b>ฝนปานกลาง</b></span>
+                                    </div>
+                                    <div v-else-if="list.data.cond === 7">
+                                      <span style="max-width: 10rem;background-color: #e5ee93;color: #ffffff;" class="tag is-medium"><b>ฝนตกหนัก</b></span>
+                                    </div>
+                                    <div v-else-if="list.data.cond === 8">
+                                      <span style="max-width: 10rem;background-color: #ff7c6b;color: #ffffff;" class="tag is-medium"><b>ฝนฟ้าคะนอง</b></span>
+                                    </div>
+                                    <div v-else-if="list.data.cond === 9">
+                                      <span style="max-width: 10rem;background-color: #bebebe;color: #ffffff;" class="tag is-medium"><b>อากาศหนาวจัด</b></span>
+                                    </div>
+                                    <div v-else-if="list.data.cond === 10">
+                                      <span style="max-width: 10rem;background-color: #8d8d8d;color: #ffffff;" class="tag is-medium"><b>อากาศหนาว</b></span>
+                                    </div>
+                                    <div v-else-if="list.data.cond === 11">
+                                      <span style="max-width: 10rem;background-color: #999999;color: #ffffff;" class="tag is-medium"><b>อากาศเย็น</b></span>
+                                    </div>
+                                    <div v-else-if="list.data.cond === 12">
+                                      <span style="max-width: 10rem;background-color: #b3edf1;color: #000000;" class="tag is-medium"><b>อากาศร้อนจัด</b></span>
+                                    </div>
+                                  </td>
+                                  <td>{{ list.data.cloudlow }}%</td>
+                                  <td>{{ list.data.rain }} มิลลิเมตร</td>
+                                  <td>{{ list.data.tc }}°C</td>
+                                </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                    </div>
+                    </div>
+                    <footer class="card-footer">
+                    &nbsp;&nbsp;&nbsp;
+                    <p style="font-size: 22px;">
+                        ข้อมูลจาก กรมอุตุนิยมวิทยา
+                    </p>
+                    </footer>
+                </div>
+                
+              </div>
+            </div>
+                
+
+            <div style="height: 1rem;"></div>
+
+            <!-- end data water level -->
+          </div>
+
+
+      <!-- end content -->
+      </div>
+      <!-- javascript -->
+      <script src="js/index.js" type="module"></script>
+    </body>
+</html>
